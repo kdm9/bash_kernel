@@ -132,7 +132,7 @@ class BashKernel(Kernel):
             prompt_change = u"PS1='{0}' PS2='{1}' PROMPT_COMMAND=''".format(ps1, ps2)
             # Using IREPLWrapper to get incremental output
             self.bashwrapper = IREPLWrapper(child, u'\$', prompt_change, self.unique_prompt,
-                                            extra_init_cmd="export PAGER=cat",
+                                            extra_init_cmd="export PAGER=cat; export JUPYTER_BASH_KERNEL=1",
                                             line_output_callback=self.process_output)
         finally:
             signal.signal(signal.SIGINT, old_sigint_handler)
